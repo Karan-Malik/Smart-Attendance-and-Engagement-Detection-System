@@ -39,8 +39,10 @@ def recognize_attendence():
                 Id = '  Unknown  '
                 tt = str(Id)
                 confstr = "  {0}%".format(round(100 - conf))
-
-            if (conf) > 55:
+            
+            
+            if (conf) <55:
+            
                 ts = time.time()
                 date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
                 timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S')
@@ -48,11 +50,7 @@ def recognize_attendence():
                 attendance.loc[len(attendance)] = [Id, aa, date, timeStamp]
 
             tt = str(tt)[2:-2]
-            if(100-conf) > 67:
-                tt = tt + " [Pass]"
-                cv2.putText(im, str(tt), (x+5,y-5), font, 1, (255, 255, 255), 2)
-            else:
-                cv2.putText(im, str(tt), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
+            cv2.putText(im, str(tt), (x + 5, y - 5), font, 1, (255, 255, 255), 2)
 
             if (100-conf) > 67:
                 cv2.putText(im, str(confstr), (x + 5, y + h - 5), font,1, (0, 255, 0),1 )

@@ -28,7 +28,7 @@ def mainMenu():
             choice = int(input("Enter Choice: "))
             if choice == 1:
                 captureFaces()
-                trainimages()
+                trainImages()
                 break
             elif choice == 2:
                 recognizeAndDrowsy()
@@ -59,7 +59,7 @@ def captureFaces():
     print('\nStudent registered\n')
     
 
-def trainimages():
+def trainImages():
     train_image.TrainImages()
     print('**Model retrained**')
     key = input("Enter any key to return main menu")
