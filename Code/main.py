@@ -5,6 +5,7 @@ import recognize
 import detect_drowsiness
 import combined
 import warnings
+import gazedetection
 warnings.filterwarnings("ignore")
 
 def title_bar():
@@ -22,7 +23,9 @@ def mainMenu():
     print("[3] Train Images")
     print("[4] Recognize and Attendance")
     print("[5] Drowsiness Detection")
-    print("[6] Quit")
+    print("[6] Gaze Detection")
+    print("[7] Quit")
+
     while True:
         try:
             choice = int(input("Enter Choice: "))
@@ -43,13 +46,16 @@ def mainMenu():
                 drowsinessDetect()
                 break
             elif choice == 6:
-                print("Thank You")
+                gazeDetection()
+                break
+            elif choice == 7:
+                print("Thank You!")
                 break
             else:
-                print("Invalid Choice. Enter 1-6")
+                print("Invalid Choice. Enter 1-7")
                 mainMenu()
         except ValueError:
-            print("Invalid Choice. Enter 1-6\n Try Again")
+            print("Invalid Choice. Enter 1-7\n Try Again")
     exit
 
 
@@ -77,6 +83,11 @@ def drowsinessDetect():
 
 def recognizeAndDrowsy():
     combined.attendanceAndDrowsy()
+    key = input("Enter any key to return main menu")
+    mainMenu()
+    
+def gazeDetection():
+    gazedetection.recognize_gaze()
     key = input("Enter any key to return main menu")
     mainMenu()
 
